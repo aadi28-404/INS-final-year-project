@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Robot Control Panel</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .box {
+            border: 1px solid #444;
+            padding: 20px;
+            margin: 10px auto;
+            width: 300px;
+            border-radius: 10px;
+            background: #222;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: limegreen;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 16px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .accuracy {
+            margin-top: 20px;
+            font-size: 20px;
+            color: cyan;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🤖 Robot Control Panel</h1>
+
+    <div class="container">
+
+        <!-- MODE SELECTION -->
+        <div class="box">
+            <h3>Select Mode</h3>
+
+            <input type="radio" name="mode" value="line" checked> Line<br>
+            <input type="radio" name="mode" value="square"> Square<br>
+        </div>
+
+        <!-- DISTANCE -->
+        <div class="box">
+            <h3>Enter Distance (meters)</h3>
+            <input type="number" id="distance" value="1" min="0.5" step="0.5">
+        </div>
+
+        <!-- GO BUTTON -->
+        <div class="box">
+            <button onclick="sendCommand()">GO 🚀</button>
+        </div>
+
+        <!-- ACCURACY DISPLAY -->
+        <div class="box">
+            <h3>Accuracy</h3>
+            <div class="accuracy" id="accuracy">-- %</div>
+        </div>
+
+    </div>
+
+    <script>
+        const RPI_IP = "http://192.168.1.100:5000";  // 🔥 CHANGE THIS
+
+        function sendCommand() {
+            let mode = document.querySelector('input[name="mode"]:checked').value;
+            let distance = document.getElementById("distance").value;
+
+            if (mode === "line") {
+                fetch(`${RPI_IP}/move?dir=forward&dist=${distance}`)
+                    .then(res => res.text())
+                    .then(data => console.log(data));
+            } else {
+                fetch(`${RPI_IP}/rectangle?side=${distance}`)
+                    .then(res => res.text())
+                    .then(data => console.log(data));
+            }
+        }
+
+        // 🔥 LIVE ACCURACY UPDATE EVERY 3 SECONDS
+        function updateAccuracy() {
+            fetch(`${RPI_IP}/accuracy`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("accuracy").innerText =
+                        data.accuracy.toFixed(2) + " %";
+                })
+                .catch(() => {
+                    document.getElementById("accuracy").innerText = "No Data";
+                });
+        }
+
+        setInterval(updateAccuracy, 3000);
+    </script>
+
+</body>
+</html>
