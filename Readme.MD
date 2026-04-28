@@ -1,13 +1,13 @@
-# 🚀 Low-Cost Strapdown Inertial Navigation System (INS)
+#  Low-Cost Strapdown Inertial Navigation System (INS)
 
 ---
 
-## 📌 Abstract  
+## Abstract  
 This project implements a **low-cost strapdown inertial navigation system (INS)** for a two-wheeler robotic platform operating in **GPS-denied environments**. Using a MEMS-based IMU (ICM-20948), the system captures motion data and processes it through **ellipsoid calibration and Extended Kalman Filtering (EKF)** to reduce drift and noise. The processed data is used to estimate the robot’s trajectory, which is visualized in real-time using ROS2 and RViz. Additionally, the system integrates web-based control and an OLED display to monitor accuracy.
 
 ---
 
-## 📖 Overview  
+## Overview  
 The system integrates sensor acquisition, calibration, filtering, and visualization into a unified ROS2 pipeline:
 
 - ESP8266 → IMU data acquisition  
@@ -18,7 +18,7 @@ The system integrates sensor acquisition, calibration, filtering, and visualizat
 
 ---
 
-## 🎯 Objectives  
+## Objectives  
 - Improve accuracy of low-cost IMU-based navigation  
 - Reduce drift using calibration and filtering  
 - Enable real-time trajectory tracking  
@@ -27,7 +27,7 @@ The system integrates sensor acquisition, calibration, filtering, and visualizat
 
 ---
 
-## 🧠 Key Concepts  
+## Key Concepts  
 
 ### 🔹 Strapdown Inertial Navigation  
 - Uses accelerometer, gyroscope, magnetometer  
@@ -36,7 +36,7 @@ The system integrates sensor acquisition, calibration, filtering, and visualizat
 
 ---
 
-## ⚙️ About Calibration  
+## About Calibration  
 Low-cost IMUs suffer from:
 
 - Bias errors  
@@ -47,9 +47,9 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 🧪 Calibration Methods  
+## Calibration Methods  
 
-### 🔸 Ellipsoid Fitting  
+### Ellipsoid Fitting  
 - Raw data forms an ellipsoid instead of a sphere  
 - Calibration transforms:
     Ellipsoid → Sphere
@@ -60,7 +60,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 🏗️ System Architecture  
+## System Architecture  
 
 ![System Architecture](images/flowchart.png)
 
@@ -68,9 +68,9 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 🔧 Hardware and Software Stack  
+## Hardware and Software Stack  
 
-### 🧰 Hardware  
+### Hardware  
 - ICM-20948 IMU  
 - ESP8266  
 - Raspberry Pi Zero 2W  
@@ -78,7 +78,7 @@ Calibration corrects these errors to improve accuracy.
 - OLED Display  
 - 2-Wheel Robot  
 
-### 💻 Software  
+### Software  
 - ROS2  
 - Python  
 - RViz  
@@ -87,7 +87,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 📊 Features  
+## Features  
 ✔ Real-time IMU processing  
 ✔ Ellipsoid calibration  
 ✔ EKF filtering  
@@ -98,7 +98,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 📈 Results  
+## Results  
 
 ![System Stability](images/stability.png)
 
@@ -110,7 +110,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-### 🔍 Observations  
+### Observations  
 - Raw IMU shows high drift  
 - Calibration reduces systematic errors  
 - EKF improves stability  
@@ -118,7 +118,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 📊 Calibration Effect (Before vs After)
+## Calibration Effect (Before vs After)
 
 ![Calibration Results](images/calibration.png)
 
@@ -128,9 +128,9 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 📸 RViz Output Results
+## RViz Output Results
 
-### 🔹 Multi-Segment Path Tracking
+### Multi-Segment Path Tracking
 ![RViz Multi Path](images/rviz_multi.png)
 
 - Shows multiple square trajectories  
@@ -141,7 +141,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-### 🔹 Single Rectangle Tracking
+### Single Rectangle Tracking
 ![RViz Rectangle](images/rviz_rectangle.png)
 
 - Demonstrates rectangular motion tracking  
@@ -151,7 +151,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-### 🔹 Accuracy Visualization
+### Accuracy Visualization
 ![RViz Accuracy](images/rviz_accuracy.png)
 
 - Accuracy displayed in real-time inside RViz  
@@ -160,7 +160,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-### 🔍 Key Insights from RViz Results
+### Key Insights from RViz Results
 - Raw IMU data shows **visible drift accumulation**  
 - Calibration reduces systematic offset  
 - EKF significantly improves trajectory stability  
@@ -168,7 +168,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 🔬 Key Contributions  
+## Key Contributions  
 - Low-cost INS using MEMS sensors  
 - Calibration + EKF framework  
 - ROS2 modular architecture  
@@ -177,7 +177,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## ⚠️ Limitations  
+## Limitations  
 - Long-term drift still exists  
 - Affected by:
   - Vibration  
@@ -186,7 +186,7 @@ Calibration corrects these errors to improve accuracy.
 
 ---
 
-## 🏁 Conclusion  
+## Conclusion  
 
 This project demonstrates that:
 
@@ -194,7 +194,7 @@ This project demonstrates that:
 
 ---
 
-## 👨‍💻 Authors  
+## Authors  
 - Azhagar Aadithyan A V  
 - Harry Deepak A  
 
@@ -203,5 +203,5 @@ Chennai Institute of Technology
 
 ---
 
-## 📜 License  
+## License  
 For academic and educational use.
